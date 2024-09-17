@@ -8,6 +8,11 @@ namespace Monogame2
         protected Vector2   position;
         protected Texture2D texture;
         protected Color     color;
+        protected Rectangle rectangle;
+
+        public Rectangle Rectangle{
+            get{return rectangle;}
+        }
 
         public BaseClass(Texture2D texture, Vector2 position)
         {
@@ -22,7 +27,7 @@ namespace Monogame2
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle rectangle = new Rectangle((int)position.X, (int)position.Y, 100, 100);   
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 100, 100);   
                     
             spriteBatch.Draw(texture, rectangle, color);
         }

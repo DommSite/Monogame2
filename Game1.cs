@@ -84,18 +84,16 @@ public class Game1 : Game
 
     public void RemoveEnemy(){
         List<BaseClass> temp = new List<BaseClass>();
-        Random rand = new Random();
+
         MouseState ms = Mouse.GetState();
         
 
         foreach(var enemy in entities){
-            if(){
+            if(!enemy.Rectangle.Contains(ms.Position)){
                 temp.Add(enemy);
-
             }
-
-            entities=temp;
         }
+        entities=temp;
     }
 
 

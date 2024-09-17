@@ -2,14 +2,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Numerics;
+
 
 namespace Monogame2
 {
     public class CircleGoer : Enemy
     {
         float angle = 1;
-        public CircleGoer(Texture2D texture, Microsoft.Xna.Framework.Vector2 position)
+        public CircleGoer(Texture2D texture, Vector2 position)
             :base(texture, position)
         {
             color = Color.Black;
