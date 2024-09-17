@@ -1,4 +1,3 @@
-using System.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -7,10 +6,11 @@ using SharpDX.MediaFoundation;
 
 namespace Monogame2
 {
-    public class Swiper : Enemy
+    public class Boss : Enemy
     {
-        float direction = 1;
-        public Swiper(Texture2D texture, Microsoft.Xna.Framework.Vector2 position)
+        float directionx = 1;
+        float directiony = 1; 
+        public Boss(Texture2D texture, Vector2 position)
             :base(texture, position)
         {
             color = Color.Black;
@@ -19,14 +19,9 @@ namespace Monogame2
         public override void Update()
         {
             MouseState ms = Mouse.GetState();
-            position.Y+=direction;
-            if(position.Y==0){
-                direction *= -1;
-            }
-            if(position.Y+100==480){
-                direction *= -1;
-            }    
-           
+            Vector2 mousePos = -ms.Position.ToVector2();
+            position.X = -(mousePos.X/2+400);
+            position.Y = -(mousePos.Y/2+240);
         }
 
         

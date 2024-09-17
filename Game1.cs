@@ -1,4 +1,5 @@
-﻿﻿using System.Collections.Generic;
+﻿﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,9 +12,7 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
 
     Texture2D pixel;
-    Player player;
-    Enemy enemy;
-    Swiper swiper;
+
     List<BaseClass> entities = new List<BaseClass>();
     
     public Game1()
@@ -36,17 +35,15 @@ public class Game1 : Game
         pixel = new Texture2D(GraphicsDevice,1,1);
         pixel.SetData(new Color[]{Color.White});
 
-        entities.Add(player);
-        entities.Add(enemy);
-        entities.Add(swiper);
-
-
-        player = new Player(pixel);
-        enemy = new Enemy(pixel, new Vector2(400,380));
-        swiper = new Swiper(pixel, new Vector2(200, 0));
-        entities.Add(player);
-        entities.Add(enemy);
-        entities.Add(swiper);
+    
+        
+        /*entities.Add(new Player(pixel));
+        entities.Add(new Enemy(pixel, new Vector2(400,380)));*/
+        entities.Add(new Swiper(pixel, new Vector2(200, 0)));
+        entities.Add(new CircleGoer(pixel, new Vector2(350, 190)));
+        entities.Add(new Slicer(pixel, new Vector2(350, 190)));
+        entities.Add(new SideSwiper(pixel, new Vector2(350, 190)));
+        entities.Add(new Boss(pixel, new Vector2(350, 190)));
 
 
 
@@ -62,6 +59,8 @@ public class Game1 : Game
         foreach(var entity in entities){
             entity.Update();
         }
+        RemoveEnemy();
+        AddEnemy();
         
 
         base.Update(gameTime);
@@ -81,5 +80,31 @@ public class Game1 : Game
         // TODO: Add your drawing code here
 
         base.Draw(gameTime);
+    }
+
+    public void RemoveEnemy(){
+        List<BaseClass> temp = new List<BaseClass>();
+        Random rand = new Random();
+        MouseState ms = Mouse.GetState();
+        
+
+        foreach(var enemy in entities){
+            if(){
+                temp.Add(enemy);
+
+            }
+
+            entities=temp;
+        }
+    }
+
+
+
+    public void AddEnemy(){
+        Random rand = new Random();
+
+        if(rand.Next(1,1000)<= 10){
+            entities.Add(new Enemy(pixel, new Vector2(rand.Next(0,700),1)));
+        }
     }
 }
