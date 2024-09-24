@@ -89,9 +89,20 @@ public class Game1 : Game
         
 
         foreach(var enemy in entities){
-            if(!enemy.Rectangle.Contains(ms.Position)){
+            
+            if(ms.LeftButton == ButtonState.Pressed && enemy.Rectangle.Contains(ms.Position)){
+
+            }
+            else{
                 temp.Add(enemy);
             }
+                
+                /*
+            if(!enemy.Rectangle.Contains(ms.Position) ){
+                if(ms.LeftButton != ButtonState.Pressed){
+                     temp.Add(enemy);
+                }
+            }*/
         }
         entities=temp;
     }
@@ -102,7 +113,7 @@ public class Game1 : Game
         Random rand = new Random();
 
         if(rand.Next(1,1000)<= 10){
-            entities.Add(new Enemy(pixel, new Vector2(rand.Next(0,700),1)));
+            entities.Add(new Enemy(pixel, new Vector2(rand.Next(0,700),rand.Next(0,380))));
         }
     }
 }
