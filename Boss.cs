@@ -20,8 +20,20 @@ namespace Monogame2
         {
             MouseState ms = Mouse.GetState();
             Vector2 mousePos = -ms.Position.ToVector2();
-            position.X = -(mousePos.X/2+400);
-            position.Y = -(mousePos.Y/2+240);
+            if(mousePos.X<=400){
+                position.X = 150;
+            }
+            if(mousePos.X>=400){
+                position.X = 350;
+            }
+            if(mousePos.Y<=240){
+                position.Y = 70;
+            }
+            if(mousePos.Y>=240){
+                position.Y = 310;
+            }
+            /*position.X = -(mousePos.X/2+400);
+            position.Y = -(mousePos.Y/2+240);*/
         }
 
         
