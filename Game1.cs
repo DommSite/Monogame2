@@ -91,7 +91,9 @@ public class Game1 : Game
         foreach(var enemy in entities){
             
             if(ms.LeftButton == ButtonState.Pressed && enemy.Rectangle.Contains(ms.Position)){
-
+                if (enemy==SideSwiper){
+                    
+                }
             }
             else{
                 temp.Add(enemy);
